@@ -3,16 +3,20 @@ package pl.sdacademy.java.intermediate.zoo;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-abstract class Animal {
+public abstract class Animal {
     private LocalDate lastEatTime;
+
+    public Animal() {
+        this.lastEatTime = LocalDate.now();
+    }
 
     public void eat() throws IDontEatException {
         lastEatTime = LocalDate.now();
     }
 
-    boolean isAlive() {
+    public boolean isAlive() {
         LocalDate tenDaysBeforeNow = LocalDate.now().minus(10, ChronoUnit.DAYS);
-        return getLastEatTime().isAfter(tenDaysBeforeNow);
+        return getLastEatTime() != null && getLastEatTime().isAfter(tenDaysBeforeNow);
     }
 
     LocalDate getLastEatTime() {
@@ -20,5 +24,7 @@ abstract class Animal {
     }
 
     abstract public int getWeight();
+
+    abstract public String display();
 
 }

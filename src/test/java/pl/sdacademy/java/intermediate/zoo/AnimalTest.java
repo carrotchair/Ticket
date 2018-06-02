@@ -1,6 +1,8 @@
 package pl.sdacademy.java.intermediate.zoo;
 
 import org.junit.jupiter.api.Test;
+import pl.sdacademy.java.intermediate.zoo.FatalAttack.Battle;
+import pl.sdacademy.java.intermediate.zoo.FatalAttack.FatalAttack;
 
 import java.time.LocalDate;
 
@@ -36,7 +38,12 @@ class AnimalTest {
     @Test
     void shouldThrowExceptionWhenTryToFeedTeddyBear() {
         //given
-        Animal teddyBear = new TeddyBear();
+        Animal teddyBear = new TeddyBear() {
+            @Override
+            public String display() {
+                return null;
+            }
+        };
         //then
         assertThrows(IDontEatException.class, teddyBear::eat);
     }
@@ -47,5 +54,39 @@ class AnimalTest {
         Bear bear = new BrowBear();
         //then
         assertEquals(bear.getWeight(), 100);
+    }
+
+    @Test
+    void shouldWeightBe200IfBearIsPolarBear() {
+        //given
+        Bear bear = new PolarBear();
+        //then
+        assertEquals(bear.getWeight(), 200);
+    }
+
+    @Test
+    void shouldWeightBe50IfBearIsBlackBear() {
+        //given
+        Bear bear = new BlackBear();
+        //then
+        assertEquals(bear.getWeight(), 50);
+    }
+
+    @Test
+    void shouldDisplayNameOfBlackBearIfBlackMINE() {
+        //given
+        Bear bear = new BlackBear();
+        //then
+        String name = bear.display();
+        assertEquals(name, "BlackBear");
+    }
+
+    @Test
+    void shouldDisplayNameOfBlackBearIfBlack() {
+        //given
+        Bear bear = new BlackBear();
+        //then
+        String name = bear.display();
+        assertEquals(name, "BlackBear");
     }
 }

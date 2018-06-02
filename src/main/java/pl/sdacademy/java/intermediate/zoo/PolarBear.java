@@ -1,23 +1,28 @@
 package pl.sdacademy.java.intermediate.zoo;
 
 import pl.sdacademy.java.intermediate.zoo.FatalAttack.Battle;
+import pl.sdacademy.java.intermediate.zoo.FatalAttack.FatalAttack;
 import pl.sdacademy.java.intermediate.zoo.FatalAttack.LightAttack;
 
-public class BrowBear extends Bear implements Attacable {
+public class PolarBear extends Bear implements Attacable {
     private final Battle battleAlgorithm;
 
-    BrowBear() {
-        battleAlgorithm = new LightAttack();
+    PolarBear(Battle battleAlgorithm) {
+        this.battleAlgorithm = battleAlgorithm;
+    }
+
+    public PolarBear() {
+        battleAlgorithm = new FatalAttack();
     }
 
     @Override
     public int getWeight() {
-        return 100;
+        return 200;
     }
 
     @Override
     public String display() {
-        return "BrownBear";
+        return "PolarBear";
     }
 
     @Override
