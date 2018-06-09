@@ -7,9 +7,9 @@ enum InstructionType {
     GET(programMemory -> {
         return new GetEvaluator(programMemory);
     }),
-    SET(SetEvaluator::new)
-    //, CAL(CalEvaluator::new)
-    ;
+    SET(SetEvaluator::new),
+    CAL(CalEvaluator::new),
+    GOTO(GoToEvaluator::new);
 
     private final Function<ProgramMemory, Evaluator> evaluatorCreator;
 

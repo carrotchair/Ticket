@@ -13,6 +13,12 @@ public class EvaluatorBuilder {
             case GET:
                 evaluator = new GetEvaluator(programMemory);
                 break;
+            case CAL:
+                evaluator = new CalEvaluator(programMemory);
+                break;
+            case GOTO:
+                evaluator = new GoToEvaluator(programMemory);
+                break;
             default:
                 Evaluator emptyEvaluator = new EmptyEvaluator();
 //                Evaluator emptyEvaluator2 = (string)->{}; to samo co wyzej

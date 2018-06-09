@@ -20,6 +20,7 @@ class ProgramLoader {
             Integer key = Integer.parseInt(matcher.group(1));
             String value = matcher.group(1);
             programMemory.getOperations().put(key, value);
+            programMemory.getOperationAdresses().add(key);
         }
     }
 }

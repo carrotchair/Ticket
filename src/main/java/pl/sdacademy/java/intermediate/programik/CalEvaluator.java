@@ -4,7 +4,6 @@ class CalEvaluator implements Evaluator {
         private final ProgramMemory programMemory;
 
         public CalEvaluator(ProgramMemory programMemory) {
-
             this.programMemory = programMemory;
         }
 

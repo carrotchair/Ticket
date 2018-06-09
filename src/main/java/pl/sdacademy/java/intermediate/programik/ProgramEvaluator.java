@@ -15,16 +15,20 @@ class ProgramEvaluator {
     }
 
     void evaluate() {
-        Map<Integer, String> operations = programMemory.getOperations();
-        for (Map.Entry<Integer, String> integerStringEntry : operations.entrySet()) { //34 PRINT Hej
-            String instruction = integerStringEntry.getValue(); //PRINT Hej
+        //Map<Integer, String> operations = programMemory.getOperations();
+        while (programMemory.hasNextOperation()) {
+            String instruction = programMemory.getNextOperation();
             evaluateInstruction(instruction);
         }
+//        for (Map.Entry<Integer, String> integerStringEntry : operations.entrySet()) { //34 PRINT Hej
+//            String instruction = integerStringEntry.getValue(); //PRINT Hej
+//            evaluateInstruction(instruction);
+//        }
     }
 
     private void evaluateInstruction(String instruction) {
         Pattern pattern = Pattern.compile("([A-Z]+) (.*)");
-        Matcher matcher = pattern.matcher(instruction);
+        Matcher matcher = pattern.matcher((CharSequence) instruction);
         if (matcher.find()) {
             String instructionType = matcher.group(1);
             String arguments = matcher.group(2);
