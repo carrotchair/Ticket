@@ -3,21 +3,23 @@ package pl.sdacademy.java.intermediate.programik;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ProgramLoader {
+class ProgramLoader {
     private final ProgramMemory programMemory;
 
     ProgramLoader(ProgramMemory programMemory) {
         this.programMemory = programMemory;
     }
     void load(String instruction) {
-        String pattern = "(\\d+) (.*)";
+        String regex = "(\\d+) (.*)"; //"(.\\S+) (.*)"
 
-        Pattern r = Pattern.compile(pattern);
+        Pattern pattern = Pattern.compile(regex);
         //Matcher m = r.matcher(line);
-        Matcher m = r.matcher(instruction);
+        Matcher matcher = pattern.matcher(instruction);
 
-        if (((Matcher) m).find()) {
-            programMemory.getOperations().put(Integer.parseInt(m.group(1)), m.group(2));
+        if (matcher.find()) {
+            Integer key = Integer.parseInt(matcher.group(1));
+            String value = matcher.group(1);
+            programMemory.getOperations().put(key, value);
         }
     }
 }
