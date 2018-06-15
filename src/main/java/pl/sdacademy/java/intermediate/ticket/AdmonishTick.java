@@ -1,16 +1,18 @@
 package pl.sdacademy.java.intermediate.ticket;
 
-public class AdmonishTick implements TicketValue {
-    private final TicketValue standTick;
+public class AdmonishTick implements Ticket {
 
-    public AdmonishTick(TicketValue standTick) {
+    private final Ticket standTick;
+
+    public AdmonishTick(Ticket standTick) {
         this.standTick = standTick;
     }
 
     @Override
-    public void printTicket() {
-        System.out.println("pouczenie");
-        standTick.printTicket();
-        System.out.println("oki doki");
+    public void print() {
+        System.out.println("-------------- POUCZENIE ---------------");
+        standTick.print();
+        System.out.println("Miłego dnia!");
+        System.out.println();
     }
 }
